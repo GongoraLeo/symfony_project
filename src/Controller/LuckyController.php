@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class LuckyController extends AbstractController
 {
-    #[Route('/lucky/number/{max}')] //la ruta se define como atributo, se pueden poner en archivos separados
+    #[Route('/lucky/number/{max}', name: 'lucky_number')] //la ruta se define como atributo, se pueden poner en archivos separados
     public function number(int $max): Response
     {
         if ($max < 10) { //gestion de errores si max es menor a 10
