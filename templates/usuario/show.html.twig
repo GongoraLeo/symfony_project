@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Usuario{% endblock %}
+
+{% block body %}
+    <h1>Usuario</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ usuario.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ usuario.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Edad</th>
+                <td>{{ usuario.edad }}</td>
+            </tr>
+            <tr>
+                <th>Nickname</th>
+                <td>{{ usuario.nickname }}</td>
+            </tr>
+            <tr>
+                <th>Biografia</th>
+                <td>{{ usuario.biografia }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Tareas asignadas</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Fecha</th>
+                <th>Categoria de la tarea</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarea in usuario.tareas %}
+                <tr>
+                    <td>{{ tarea.id }}</td>
+                    <td>{{ tarea.titulo }}</td>
+                    <td>{{ tarea.descripcion }}</td>
+                    <td>{{ tarea.fecha ? tarea.fecha|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ tarea.categoria.nombre }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">No hay tareas asignadas a este usuario</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% block links %}
+    <a class="links" href="{{ path('app_tareas_new') }}">Crear nueva tarea</a>
+
+    <a class="links" href="{{ path('app_usuario_index') }}">back to list</a>
+
+    <a class="links" href="{{ path('app_usuario_edit', {'id': usuario.id}) }}">edit</a>
+    {% endblock %}
+
+    {% block delete_form %}
+    {{ include('usuario/_delete_form.html.twig') }}
+    {% endblock %}
+
+{% endblock %}

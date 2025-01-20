@@ -14,7 +14,7 @@
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
-        "version": "3.3",
+        "version": "3.4",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
@@ -24,18 +24,6 @@
         "files": [
             "./config/packages/doctrine_migrations.yaml",
             "./migrations/.gitignore"
-        ]
-    },
-    "php-cs-fixer/shim": {
-        "version": "3.68",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "3.0",
-            "ref": "16422bf8eac6c3be42afe07d37e2abc89d2bdf6b"
-        },
-        "files": [
-            "./.php-cs-fixer.dist.php"
         ]
     },
     "symfony/console": {
@@ -140,21 +128,5 @@
         "files": [
             "./config/packages/validator.yaml"
         ]
-    },
-    "symfony/web-profiler-bundle": {
-        "version": "7.2",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "6.1",
-            "ref": "e42b3f0177df239add25373083a564e5ead4e13a"
-        },
-        "files": [
-            "./config/packages/web_profiler.yaml",
-            "./config/routes/web_profiler.yaml"
-        ]
-    },
-    "twig/extra-bundle": {
-        "version": "v3.18.0"
     }
 }

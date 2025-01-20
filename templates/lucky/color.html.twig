@@ -1,8 +1,0 @@
-{# templates/lucky/color.html.twig #}
-{% extends 'base.html.twig' %}
-
-{% block body %}
-    <h1>Su color de la suerte es el: {{ color|upper }}</h1>
-
-    <a href="{{ path('lucky_number', {max: 120}) }}">Ir a tu número favorito</a>
-{% endblock %}
