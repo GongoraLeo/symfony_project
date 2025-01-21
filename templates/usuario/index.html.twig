@@ -3,7 +3,7 @@
 {% block title %}Usuario index{% endblock %}
 
 {% block body %}
-    <h1>Usuario index</h1>
+    <h1>Índice de Usuarios</h1>
 
     <table class="table">
         <thead>
@@ -13,7 +13,7 @@
                 <th>Edad</th>
                 <th>Nickname</th>
                 <th>Biografia</th>
-                <th>actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -31,11 +31,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">No se ha encontrado ningún usuario</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a class="links" href="{{ path('app_usuario_new') }}">Create new</a>
+    <a class="links" href="{{ path('app_usuario_new') }}">Crear nuevo usuario</a>
 {% endblock %}

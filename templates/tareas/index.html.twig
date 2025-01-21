@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tareas index{% endblock %}
+{% block title %}Índice de Tareas{% endblock %}
 
 {% block body %}
-    <h1>Tareas index</h1>
+    <h1>Índice de Tareas</h1>
 
     <table class="table">
         <thead>
@@ -12,7 +12,7 @@
                 <th>Titulo</th>
                 <th>Descripcion</th>
                 <th>Fecha</th>
-                <th>actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -29,11 +29,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">No se ha encontrado nada en la base de datos</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a class="links" href="{{ path('app_tareas_new') }}">Create new</a>
+    <a class="links" href="{{ path('app_tareas_new') }}">Crear nueva tarea</a>
 {% endblock %}

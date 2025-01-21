@@ -45,7 +45,7 @@ final class TareasController extends AbstractController
     #[Route('/{id}', name: 'app_tareas_show', methods: ['GET'])]
     public function show(Tareas $tarea): Response
     {
-        // Recuperar el usuario y la categoría asignados a la tarea
+        // Recupero el usuario y la categoría asignados a la tarea
         $usuario = $tarea->getUsuario();
         $categoria = $tarea->getCategoria();
 
