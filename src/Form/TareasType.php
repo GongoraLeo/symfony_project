@@ -22,6 +22,7 @@ class TareasType extends AbstractType
             ->add('categoria', EntityType::class, [
                 'class' => Categoria::class,
                 'choice_label' => 'id',
+                'required' => $options['is_edit'] ? false : true,
             ])
         ;
     }
@@ -30,6 +31,7 @@ class TareasType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Tareas::class,
+            'is_edit' => false,
         ]);
     }
 }

@@ -26,7 +26,9 @@ final class TareasController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $tarea = new Tareas();
-        $form = $this->createForm(Tareas1Type::class, $tarea);
+        $form = $this->createForm(Tareas1Type::class, $tarea, [
+            'is_edit' => false,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -59,7 +61,9 @@ final class TareasController extends AbstractController
     #[Route('/{id}/edit', name: 'app_tareas_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Tareas $tarea, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(Tareas1Type::class, $tarea);
+        $form = $this->createForm(Tareas1Type::class, $tarea, [
+            'is_edit' => true,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

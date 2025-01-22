@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\TareasRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 #[ORM\Entity(repositoryClass: TareasRepository::class)]
 class Tareas
@@ -95,4 +97,14 @@ class Tareas
 
         return $this;
     }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata): void
+    {
+        $metadata->addPropertyConstraint('titulo', new Assert\NotBlank(['message' => 'El título no puede estar vacío']));
+        $metadata->addPropertyConstraint('descripcion', new Assert\NotBlank(['message' => 'La descripción no puede estar vacía']));
+        $metadata->addPropertyConstraint('fecha', new Assert\NotBlank(['message' => 'La fecha no puede estar vacía']));
+        $metadata->addPropertyConstraint('categoria', new Assert\NotBlank(['message' => 'La categoría no puede estar vacía']));
+        $metadata->addPropertyConstraint('usuario', new Assert\NotBlank(['message' => 'El usuario no puede estar vacío']));
+    }
+
 }

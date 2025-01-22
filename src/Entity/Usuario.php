@@ -6,6 +6,8 @@ use App\Repository\UsuarioRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 #[ORM\Entity(repositoryClass: UsuarioRepository::class)]
 class Usuario
@@ -119,5 +121,11 @@ class Usuario
         }
 
         return $this;
+    }
+    
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('nombre', new Assert\NotBlank());
+        $metadata->addPropertyConstraint('nickname', new Assert\NotBlank());
     }
 }

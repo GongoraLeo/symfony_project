@@ -6,6 +6,8 @@ use App\Repository\CategoriaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 #[ORM\Entity(repositoryClass: CategoriaRepository::class)]
 class Categoria
@@ -16,6 +18,7 @@ class Categoria
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+
     private ?string $nombre = null;
 
     /**
@@ -74,5 +77,17 @@ class Categoria
         }
 
         return $this;
+    }
+
+    //validacion
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('nombre', new Assert\NotBlank([
+            'message' => 'Por favor, introduce un nombre para la categoria',
+        ]));
+        $metadata->addPropertyConstraint('nombre', new Assert\Regex([
+            'pattern' => '/^[a-zA-Z0-9_]+$/',
+            'message' => 'El nombre solo puede contener letras, números y guiones bajos',
+        ]));
     }
 }
