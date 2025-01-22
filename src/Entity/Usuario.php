@@ -128,4 +128,9 @@ class Usuario
         $metadata->addPropertyConstraint('nombre', new Assert\NotBlank());
         $metadata->addPropertyConstraint('nickname', new Assert\NotBlank());
     }
+
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 }

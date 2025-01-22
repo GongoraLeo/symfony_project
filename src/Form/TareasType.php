@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Categoria;
 use App\Entity\Tareas;
+use App\Entity\Usuario;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,7 +22,12 @@ class TareasType extends AbstractType
             ])
             ->add('categoria', EntityType::class, [
                 'class' => Categoria::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nombre',
+                'required' => $options['is_edit'] ? false : true,
+            ])
+            ->add('usuario', EntityType::class, [
+                'class' => Usuario::class,
+                'choice_label' => 'nombre',
                 'required' => $options['is_edit'] ? false : true,
             ])
         ;

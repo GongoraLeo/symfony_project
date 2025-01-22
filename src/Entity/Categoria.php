@@ -85,9 +85,14 @@ class Categoria
         $metadata->addPropertyConstraint('nombre', new Assert\NotBlank([
             'message' => 'Por favor, introduce un nombre para la categoria',
         ]));
-        $metadata->addPropertyConstraint('nombre', new Assert\Regex([
-            'pattern' => '/^[a-zA-Z0-9_]+$/',
-            'message' => 'El nombre solo puede contener letras, números y guiones bajos',
-        ]));
+        // $metadata->addPropertyConstraint('nombre', new Assert\Regex([
+        //     'pattern' => '/^[a-zA-Z0-9_]+$/',
+        //     'message' => 'El nombre solo puede contener letras, números y guiones bajos',
+        // ]));
+    }
+
+    public function __toString(): string
+    {
+        return $this->nombre;
     }
 }

@@ -30,6 +30,7 @@ final class TareasController extends AbstractController
             'is_edit' => false,
         ]);
         $form->handleRequest($request);
+         
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($tarea);
@@ -65,6 +66,7 @@ final class TareasController extends AbstractController
             'is_edit' => true,
         ]);
         $form->handleRequest($request);
+       
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
