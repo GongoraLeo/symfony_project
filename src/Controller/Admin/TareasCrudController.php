@@ -9,6 +9,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 
 class TareasCrudController extends AbstractCrudController
 {
@@ -21,14 +25,17 @@ class TareasCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            FormField::addColumn(8),
+            IdField::new('id')->hideOnForm(),
             TextField::new('Titulo'),
             TextField::new('Descripcion'),
             DateTimeField::new('Fecha'),
+
+            FormField::addColumn(4),
             AssociationField::new('categoria')->setLabel('Categoría'),
             AssociationField::new('usuario')->setLabel('Usuario'),
 
         ];
-    }
+    }    
     
 }

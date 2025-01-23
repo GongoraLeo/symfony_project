@@ -37,6 +37,9 @@ class DashboardController extends AbstractDashboardController
         // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
         // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
         //
+
+        return $this->render('admin/dashboard.html.twig');
+
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
         return $this->redirect($adminUrlGenerator->setController(UsuarioCrudController::class)->generateUrl());
         return $this->redirect($routeBuilder->setController(UsuarioCrudController::class)->generateUrl());
@@ -49,7 +52,6 @@ class DashboardController extends AbstractDashboardController
         return $this->redirect($adminUrlGenerator3->setController(CategoriaCrudController::class)->generateUrl());
         return $this->redirect($routeBuilder3->setController(CategoriaCrudController::class)->generateUrl());
 
-        return $this->render('admin/dashboard.html.twig');
     }
 
     public function configureDashboard(): Dashboard
