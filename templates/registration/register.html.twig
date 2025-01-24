@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Registro de usuario</h1>
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.username) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Registrar</button>
+    {{ form_end(registrationForm) }}
+    <p>Si ya estás registrado pasa por el siguiente enlace:</p>
+    <a class="links" href="{{ path('app_login') }}">Login de usuario:</a>
+{% endblock %}

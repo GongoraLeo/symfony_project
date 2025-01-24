@@ -15,6 +15,11 @@
 
 <div class="example-wrapper">
     <h1>Aplicación de gestión de tareas</h1>
+    {% if app.user %}
+            <div class="mb-3">
+                Te has logado como {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Cerrar sesion</a>
+            </div>
+        {% endif %}
 
     Elija qué desea hacer:
     <ul>
