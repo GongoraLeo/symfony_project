@@ -1,36 +1,57 @@
-
-
-{% block title %}Página de inicio{% endblock %}
+{% block title %}Página de inicio
+{% endblock %}
 {% block stylesheets %}
-    {# the CSS file lives at "public/css/inicio.css" #}
-    <link class="links" href="{{ asset('css/inicio.css') }}" rel="stylesheet"/>
+	{# the CSS file lives at "public/css/inicio.css" #}
+	<link class="links" href="{{ asset('css/inicio.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
 
-<div class="example-wrapper">
-    <h1>Aplicación de gestión de tareas</h1>
-    {% if app.user %}
-            <div class="mb-3">
-                Te has logado como {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Cerrar sesion</a>
-            </div>
-        {% endif %}
+	<div class="example-wrapper">
+		<h1>Aplicación de gestión de tareas</h1>
+		<hr>
+		Elija qué desea hacer:
+		<ul>
+			<li>
+				<a class="links" href="{{ path('app_tareas_index') }}">Gestionar tareas</a>
+			</li>
+			<li>
+				<a class="links" href="{{ path('app_categoria_index') }}">Gestionar categorías</a>
+			</li>
+			<li>
+				<a class="links" href="{{ path('app_usuario_index') }}">Gestionar usuarios</a>
+			</li>
+		</ul>
+		<hr>
+		<ul>
+			<li>
+				<a class="links" href="{{ path('admin') }}">Panel de administración</a>
+			</li>
+			<li>
+				<a class="links" href="{{ asset('/api') }}">API Platform</a>
+			</li>
+		</ul>
+		<hr>
+		{% if app.user %}
+			<div class="mb-3">
+				Te has logado como
+				{{ app.user.userIdentifier }},
+				<a href="{{ path('app_logout') }}">Cerrar sesion</a>
+			</div>
+		{% endif %}
 
-    Elija qué desea hacer:
-    <ul>
-        <li><a class="links" href="{{ path('app_tareas_index') }}">Gestionar tareas</a></li>
-        <li><a class="links" href="{{ path('app_categoria_index') }}">Gestionar categorías</a></li>
-        <li><a class="links" href="{{ path('app_usuario_index') }}">Gestionar usuarios</a></li>
-    </ul>
-    <ul>
-        <li><a class="links" href="{{ path('admin') }}">Panel de administración</a></li>
-    </ul>
-
-
-</div>
+	</div>
 {% endblock %}

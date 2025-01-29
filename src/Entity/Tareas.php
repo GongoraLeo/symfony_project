@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
-#[ApiResource]
+#[ApiResource (security: "is_granted('ROLE_USER')")]
 #[ORM\Entity(repositoryClass: TareasRepository::class)]
 class Tareas
 {
